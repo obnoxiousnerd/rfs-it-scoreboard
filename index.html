@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content="Scoreboard designed for RFS IT Quiz.">
+		<meta name="author" content="Pranav Karawale">
+
+		<title>IT Quiz Scoreboard</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<main>
+			<section class="scoreboard">
+				<section class="tile hawks">
+					<h1>Hawks</h1>
+					<input type="number" name="hawksScore" min="0" value="0" step="5" />
+					<button class="eliminate">&times;</button>
+				</section>
+				<section class="tile kites">
+					<h1>Kites</h1>
+					<input type="number" name="kitesScore" min="0" value="0" step="5" />
+					<button class="eliminate">&times;</button>
+				</section>
+				<section class="tile eagles">
+					<h1>Eagles</h1>
+					<input type="number" name="eaglesScore" min="0" value="0" step="5" />
+					<button class="eliminate">&times;</button>
+				</section>
+				<section class="tile falcons">
+					<h1>Falcons</h1>
+					<input type="number" name="falconsScore" min="0" value="0" step="5" />
+					<button class="eliminate">&times;</button>
+				</section>
+			</section>
+		</main>
+
+		<script>
+			function removeTeam(tile) {
+				tile.classList.add('eliminated');
+				tile.querySelector('input').disabled = true;
+			}
+			document.querySelectorAll('.scoreboard .tile').forEach((tile) => {
+				const eliminateButton = tile.querySelector('.eliminate');
+				eliminateButton.addEventListener('click', () => {
+					if (confirm('Are you sure you want to eliminate this team?')) {
+						removeTeam(tile);
+					}
+				});
+			});
+		</script>
+	</body>
+</html>
